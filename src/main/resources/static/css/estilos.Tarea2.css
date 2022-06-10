@@ -1,0 +1,52 @@
+#menu {
+    position: absolute;
+    top: 8%;
+    left: 0;
+    height: 4%;
+    width: 100%;
+    background-color: #99ccff;
+    color: black;
+}
+#menu a:visited {
+    color: #0033cc;
+}
+#menu a:hover {
+    background-color: #0033cc;
+    color: white;
+}
+#contenido {
+    position: absolute;
+    top: 12%;
+    left: 0%;
+    height: 78%;
+    width: 100%;
+    background-color: #24a1df;
+    color: black;
+    overflow: auto;
+}
+#piePagina {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 10%;
+    width: 100%;
+    background-color: #666666;
+    color: black;
+    text-align: center;
+}
+#EncabezadoTabla {
+    font-size: 20px;
+    color: black;
+    background-color: #ffffff;
+}
+#tablaResumen tr {
+    font-size: 25px;
+    color: #ca664e
+}
+#tablaResumen tr:nth-child(odd) {
+    background-color: gold;
+}
+#tablaResumen tr:nth-child(even) {
+    background-color: #999900;
+}
+
