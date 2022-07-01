@@ -3,6 +3,7 @@ package com.tienda.tienda.controller;
 
 import com.tienda.tienda.dao.ClienteDao;
 import com.tienda.tienda.domain.Cliente;
+import com.tienda.tienda.service.ClienteService;
 import java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class IndexController {
 @Autowired
-private ClienteDao clienteDao;
+private ClienteService clienteService;
 
     @GetMapping("/")
     public String inicio(Model model) {
@@ -30,8 +31,29 @@ private ClienteDao clienteDao;
        Cliente cliente3 = new Cliente("Pedro", "Mora", "diegoadm119@hotmail.com", "8713-0708");
         var clientes = Arrays.asList(cliente, cliente2, cliente3);
         //*var clientes = Arrays.asList(); */
-       var clientes = clienteDao.findAll();
+       var clientes = clienteService.getClientes();
         model.addAttribute("clientes", clientes);
         return "index";
+    }
+    
+    @GetMapping("/nuevoCliente")
+    public String nuevoCliente(Cliente cliente){
+        return"modificarCliente";
+    }
+    @PostMapping("/guardarCliente")
+    public String guardarCliente(Cliente cliente){
+        clienteService.save(cliente);
+        return "redirect:/";
+    }
+    @GetMapping("/modificarCliente/{idCliente}")
+    public String modificarCliente(Cliente cliente, Model model){
+        cliente= clienteService.getCliente(cliente);
+        model.addAttribute("cliente", cliente);
+        return"modificarCliente";
+    }
+    @GetMapping("/eliminarCliente/{idCliente}")
+    public String eliminarCliente(Cliente cliente){
+        clienteService.delete(cliente);
+        return "redirect:/";
     }
 }
