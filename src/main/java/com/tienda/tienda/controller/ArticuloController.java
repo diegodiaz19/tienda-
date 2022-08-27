@@ -27,6 +27,21 @@ public class ArticuloController {
 
         return "/articulo/listado";
     }
+    /*@GetMapping("/articulo/listado")
+    public String inicio(Model model) {
+        var articulos=articuloService.getArticulos(false);
+        
+        var limiteTotal=0;
+        for (var c: articulos) {
+            limiteTotal+=c.getExistencias();
+                  //  .limite;
+        }
+        model.addAttribute("limiteTotal",limiteTotal);
+        model.addAttribute("totalArticulos",articulos.size());
+        
+        model.addAttribute("articulos",articulos);
+        return "/articulo/listado";
+    }*/
 
     @GetMapping("/articulo/nuevo")
     public String nuevoArticulo(Articulo articulo, Model model) {
